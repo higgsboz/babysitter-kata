@@ -39,7 +39,9 @@ describe('src/init', () => {
   })
 
   it('calls calculateWages with the correct values', () => {
-    expect(handleInputSpy).toHaveBeenCalledTimes(3)
+    expect(handleInputSpy).toHaveBeenNthCalledWith(1, expect.any(Function))
+    expect(handleInputSpy).toHaveBeenNthCalledWith(2, expect.any(Function))
+    expect(handleInputSpy).toHaveBeenNthCalledWith(3, expect.any(Function))
     expect(calculateWagesSpy).toHaveBeenCalledWith(startTime, bedTime, endTime)
   })
 
