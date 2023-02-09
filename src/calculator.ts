@@ -1,4 +1,4 @@
-import dayjs, { Dayjs } from 'dayjs'
+import { Dayjs } from 'dayjs'
 import strings from './resources/strings'
 
 const PRE_BEDTIME_WAGE = 12

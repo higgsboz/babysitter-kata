@@ -24,8 +24,7 @@
   },
   "scripts": {
     "start": "tsc && node dist/index.js",
-    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings=0 --fix",
+    "lint": "eslint src/* --ext .js,.jsx,.ts,.tsx --max-warnings=0 --fix",
     "test": "jest --silent"
   },
   "dependencies": {
