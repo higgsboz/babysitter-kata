@@ -61,7 +61,7 @@ export const handleInput = (prompt: () => string) => {
       return result.data
     }
     console.log(result.message)
-    console.log(`${attempts.prefix} ${tries} ${attempts.suffix}`)
+    console.log(`${attempts.prefix} ${tries - 1} ${attempts.suffix}`)
   }
 
   console.log(attempts.exceeded)
