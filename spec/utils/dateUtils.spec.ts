@@ -1,9 +1,6 @@
-import dayjs, { Dayjs } from 'dayjs'
-import customParseFormat from 'dayjs/plugin/customParseFormat'
-
+import { Dayjs } from 'dayjs'
+import { dayjs } from '../../src/utils'
 import { DateUtils } from '../../src/utils'
-
-dayjs.extend(customParseFormat)
 
 import strings from '../../src/resources/strings'
 

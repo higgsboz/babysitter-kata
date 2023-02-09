@@ -1,13 +1,8 @@
-import dayjs from 'dayjs'
-import utc from 'dayjs/plugin/utc'
-import customParseFormat from 'dayjs/plugin/customParseFormat'
+import { dayjs } from '../../src/utils'
 import MockDate from 'mockdate'
 
 import strings from '../../src/resources/strings'
 import { Calculator } from '../../src/utils'
-
-dayjs.extend(customParseFormat)
-dayjs.extend(utc)
 
 const {
   dayjs: { format },

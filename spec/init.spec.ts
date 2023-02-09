@@ -1,12 +1,9 @@
-import dayjs from 'dayjs'
-import customParseFormat from 'dayjs/plugin/customParseFormat'
+import { dayjs } from '../src/utils'
 import strings from '../src/resources/strings'
 
 import * as userInputUtils from '../src/utils/userInputUtils'
 import init from '../src/init'
 import * as calculator from '../src/utils/calculator'
-
-dayjs.extend(customParseFormat)
 
 const {
   dayjs: { format },

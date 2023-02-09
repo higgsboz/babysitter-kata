@@ -1,16 +1,10 @@
 import process from 'process'
 
-import dayjs, { Dayjs } from 'dayjs'
-import customParseFormat from 'dayjs/plugin/customParseFormat'
-import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
-import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
+import { Dayjs } from 'dayjs'
+import { dayjs } from './'
 
 import { DateUtils } from './'
 import strings from '../resources/strings'
-
-dayjs.extend(customParseFormat)
-dayjs.extend(isSameOrBefore)
-dayjs.extend(isSameOrAfter)
 
 const {
   userInput: { attempts },

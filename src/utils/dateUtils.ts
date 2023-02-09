@@ -1,8 +1,6 @@
-import dayjs, { Dayjs } from 'dayjs'
-import customParseFormat from 'dayjs/plugin/customParseFormat'
+import { Dayjs } from 'dayjs'
+import { dayjs } from './'
 import strings from '../resources/strings'
-
-dayjs.extend(customParseFormat)
 
 const {
   errors,

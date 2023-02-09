@@ -1,14 +1,11 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import dayjs from 'dayjs'
-import customParseFormat from 'dayjs/plugin/customParseFormat'
+import { dayjs } from '../../src/utils'
 
 import { UserInputUtils } from '../../src/utils'
 
 import strings from '../../src/resources/strings'
 import * as dateUtils from '../../src/utils/dateUtils'
-
-dayjs.extend(customParseFormat)
 
 const {
   dayjs: { format },
