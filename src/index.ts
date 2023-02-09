@@ -1,1 +1,3 @@
-export const helloWorld = () => 'Hello World'
+import init from './init'
+
+init()
