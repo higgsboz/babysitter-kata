@@ -1,6 +1,6 @@
 import process from 'process'
 
-import { Dayjs } from 'dayjs'
+import type { Dayjs } from 'dayjs'
 import { dayjs } from './'
 
 import { DateUtils } from './'

@@ -1,4 +1,4 @@
-import { Dayjs } from 'dayjs'
+import type { Dayjs } from 'dayjs'
 import { dayjs } from './'
 import strings from '../resources/strings'
 

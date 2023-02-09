@@ -24,7 +24,7 @@
   },
   "scripts": {
     "start": "tsc && node dist/index.js",
-    "lint": "eslint src/* --ext .js,.jsx,.ts,.tsx --max-warnings=0 --fix",
+    "lint": "eslint src/* spec/* --ext .js,.jsx,.ts,.tsx --max-warnings=0 --fix",
     "test": "jest --silent"
   },
   "dependencies": {
