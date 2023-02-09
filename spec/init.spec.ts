@@ -22,6 +22,10 @@ describe('src/init', () => {
   const endTime = dayjs('1:00am', format).add(1, 'day')
 
   beforeEach(() => {
+    calculateWagesSpy?.mockClear()
+    handleInputSpy?.mockClear()
+    mockConsole?.mockClear()
+
     handleInputSpy = jest
       .spyOn(userInputUtils, 'handleInput')
       .mockImplementationOnce(() => startTime)
@@ -33,10 +37,11 @@ describe('src/init', () => {
       .mockReturnValue(80)
 
     mockConsole = jest.spyOn(console, 'log')
-    init()
   })
 
   it('calls calculateWages with the correct values', () => {
+    init()
+
     expect(handleInputSpy).toHaveBeenNthCalledWith(1, expect.any(Function))
     expect(handleInputSpy).toHaveBeenNthCalledWith(2, expect.any(Function))
     expect(handleInputSpy).toHaveBeenNthCalledWith(3, expect.any(Function))
@@ -44,6 +49,19 @@ describe('src/init', () => {
   })
 
   it('prints correct value to the console', () => {
+    init()
+
     expect(mockConsole).toHaveBeenCalledWith(success, 80)
+  })
+
+  it('should print error log on error', () => {
+    calculateWagesSpy.mockClear()
+    calculateWagesSpy.mockImplementation(() => {
+      throw Error('oops')
+    })
+
+    init()
+
+    expect(mockConsole).toHaveBeenCalledWith('oops')
   })
 })
