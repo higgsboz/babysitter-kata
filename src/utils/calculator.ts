@@ -1,5 +1,5 @@
 import { Dayjs } from 'dayjs'
-import strings from './resources/strings'
+import strings from '../resources/strings'
 
 const PRE_BEDTIME_WAGE = 12
 const POST_BEDTIME_WAGE = 8

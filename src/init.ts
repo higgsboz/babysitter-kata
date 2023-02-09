@@ -1,20 +1,20 @@
 import promptSync from 'prompt-sync'
 
-import { calculateWages } from './calculator'
+import { Calculator, UserInputUtils } from './utils'
 import strings from './resources/strings'
-import { handleInput } from './userInputUtils'
 
 const { prompts, success } = strings
 
 const init = () => {
   const prompt = promptSync({ sigint: true })
 
-  const startTime = handleInput(() => prompt(prompts.startTime))
-  const bedTime = handleInput(() => prompt(prompts.bedTime))
-  const endTime = handleInput(() => prompt(prompts.endTime))
+  const startTime = UserInputUtils.handleInput(() => prompt(prompts.startTime))
+  const bedTime = UserInputUtils.handleInput(() => prompt(prompts.bedTime))
+  const endTime = UserInputUtils.handleInput(() => prompt(prompts.endTime))
 
+  // This is fine because if any of them are null, the program would have quit
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const wages = calculateWages(startTime!, bedTime!, endTime!)
+  const wages = Calculator.calculateWages(startTime!, bedTime!, endTime!)
 
   console.log(success, wages)
 }

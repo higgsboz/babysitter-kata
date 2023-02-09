@@ -5,8 +5,8 @@ import customParseFormat from 'dayjs/plugin/customParseFormat'
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
 
-import { increaseDateIfMorning, parseDate } from './dateUtils'
-import strings from './resources/strings'
+import { DateUtils } from './'
+import strings from '../resources/strings'
 
 dayjs.extend(customParseFormat)
 dayjs.extend(isSameOrBefore)
@@ -31,7 +31,7 @@ const isValidInput = (input: string): ValidationResult => {
   let message = ''
   let date = undefined
   try {
-    date = increaseDateIfMorning(parseDate(input))
+    date = DateUtils.increaseDateIfMorning(DateUtils.parseDate(input))
     if (!isTimeValid(date)) {
       message = errors.outsideBounds
     }

@@ -1,11 +1,11 @@
 import dayjs, { Dayjs } from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 
-import { parseDate, increaseDateIfMorning } from '../src/dateUtils'
+import { DateUtils } from '../../src/utils'
 
 dayjs.extend(customParseFormat)
 
-import strings from '../src/resources/strings'
+import strings from '../../src/resources/strings'
 
 const {
   dayjs: { format },
@@ -25,7 +25,7 @@ describe('src/dateUtils', () => {
       '12:00am',
       '12:00pm',
     ])('%s should be a valid date', (date) => {
-      const parsedDate = parseDate(date)
+      const parsedDate = DateUtils.parseDate(date)
       expect(parsedDate?.isValid()).toBeTruthy()
     })
 
@@ -37,7 +37,7 @@ describe('src/dateUtils', () => {
       '',
       'gibberish',
     ])('should throw an error for invalid date: %s', (date) => {
-      expect(() => parseDate(date)).toThrow(Error('Invalid Date'))
+      expect(() => DateUtils.parseDate(date)).toThrow(Error('Invalid Date'))
     })
   })
 
@@ -48,7 +48,7 @@ describe('src/dateUtils', () => {
       dayjs('4:00am', format),
     ])('should increase %s to next date', (day) => {
       const expectedDate = day.date() + 1
-      const newDay = increaseDateIfMorning(day)
+      const newDay = DateUtils.increaseDateIfMorning(day)
       expect(newDay.date()).toBe(expectedDate)
     })
 
@@ -58,7 +58,7 @@ describe('src/dateUtils', () => {
       dayjs('11:59am', format),
     ])('should keep %s the same', (day) => {
       const expectedDate = day.date()
-      const newDay = increaseDateIfMorning(day)
+      const newDay = DateUtils.increaseDateIfMorning(day)
       expect(newDay.date()).toBe(expectedDate)
     })
   })

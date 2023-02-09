@@ -3,12 +3,12 @@
 import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 
-import { handleInput } from '../src/userInputUtils'
+import { UserInputUtils } from '../../src/utils'
+
+import strings from '../../src/resources/strings'
+import * as dateUtils from '../../src/utils/dateUtils'
 
 dayjs.extend(customParseFormat)
-
-import strings from '../src/resources/strings'
-import * as dateUtils from '../src/dateUtils'
 
 const {
   dayjs: { format },
@@ -36,7 +36,7 @@ describe('src/useInputUtils', () => {
       'should return same dayjs object for %s',
       (date) => {
         setup(date)
-        expect(handleInput(prompt)).toEqual(dayjs(date, format))
+        expect(UserInputUtils.handleInput(prompt)).toEqual(dayjs(date, format))
       }
     )
 
@@ -44,7 +44,9 @@ describe('src/useInputUtils', () => {
       'should return dayjs object 1 day in the future for %s',
       (date) => {
         setup(date)
-        expect(handleInput(prompt)).toEqual(dayjs(date, format).add(1, 'day'))
+        expect(UserInputUtils.handleInput(prompt)).toEqual(
+          dayjs(date, format).add(1, 'day')
+        )
       }
     )
 
@@ -56,7 +58,7 @@ describe('src/useInputUtils', () => {
         })
 
       setup('9:00pm')
-      handleInput(prompt)
+      UserInputUtils.handleInput(prompt)
 
       expect(console.log).toHaveBeenCalledWith('oops')
       spy.mockRestore()
@@ -68,7 +70,7 @@ describe('src/useInputUtils', () => {
       })
 
       setup('9:00pm')
-      handleInput(prompt)
+      UserInputUtils.handleInput(prompt)
 
       expect(console.log).toHaveBeenCalledWith('oops')
       spy.mockRestore()
@@ -80,7 +82,7 @@ describe('src/useInputUtils', () => {
         .mockReturnValueOnce('3:00pm')
         .mockReturnValueOnce('9:00pm')
 
-      const result = handleInput(prompt)
+      const result = UserInputUtils.handleInput(prompt)
 
       expect(mockStdout).toHaveBeenCalledTimes(2)
       expect(result).toEqual(dayjs('9:00pm', format))
@@ -93,7 +95,7 @@ describe('src/useInputUtils', () => {
         .mockReturnValueOnce('4:00pm')
         .mockReturnValueOnce('9:00pm')
 
-      const result = handleInput(prompt)
+      const result = UserInputUtils.handleInput(prompt)
 
       expect(mockStdout).toHaveBeenCalledTimes(4)
       expect(result).toEqual(dayjs('9:00pm', format))
@@ -103,7 +105,7 @@ describe('src/useInputUtils', () => {
       'should exit program after 3 invalid inputs of %s',
       (date) => {
         setup(date)
-        handleInput(prompt)
+        UserInputUtils.handleInput(prompt)
 
         expect(mockExit).toHaveBeenCalledWith(0)
       }
