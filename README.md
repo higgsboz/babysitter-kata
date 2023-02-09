@@ -8,6 +8,12 @@ For example, if the babysitter works from 6:30pm - 8:00pm, she has only worked o
 
 ## Installation
 
+`yarn && yarn start`
+
+### `yarn`
+
+Installs the necessary dependencies
+
 ### `yarn start`
 
 Compiles the typescript project and starts a CLI program.
