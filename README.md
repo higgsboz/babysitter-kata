@@ -1,5 +1,11 @@
 # Babysitter Kata
 
+## Assumptions
+
+Based off of this line in the problem statement `gets paid for full hours (no fractional hours)`, I rounded down for all work hours.
+
+For example, if the babysitter works from 6:30pm - 8:00pm, she has only worked one full hour and thus receives $12
+
 ## Installation
 
 ### `yarn start`
