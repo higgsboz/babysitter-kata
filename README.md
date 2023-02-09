@@ -15,3 +15,7 @@ Compiles the typescript project and starts a CLI program.
 ### `yarn test`
 
 Runs the jest test suite
+
+### `yarn lint`
+
+Runs eslint and prettier for code standards and styling
