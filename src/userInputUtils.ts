@@ -51,24 +51,19 @@ const isValidInput = (input: string): ValidationResult => {
 }
 
 export const handleInput = (prompt: () => string) => {
-  const tries = 3
+  let tries = 3
 
   let input = ''
-  let i = 0
-  for (i; i < tries; i++) {
+  for (tries; tries > 0; tries--) {
     input = prompt()
     const result = isValidInput(input)
     if (result.success) {
       return result.data
     }
     console.log(result.message)
-    console.log(`${attempts.prefix} ${tries - i - 1} ${attempts.suffix}`)
+    console.log(`${attempts.prefix} ${tries} ${attempts.suffix}`)
   }
 
-  if (i === 3) {
-    console.log(attempts.exceeded)
-    process.exit(0)
-  }
-
-  return undefined
+  console.log(attempts.exceeded)
+  process.exit(0)
 }

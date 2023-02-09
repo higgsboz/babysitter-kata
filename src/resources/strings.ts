@@ -17,6 +17,7 @@ export default {
     invalidTimeSequence:
       'Invalid Input: Must have startTime <= bedTime <= endTime',
   },
+  success: '\nYou would make $',
   dayjs: {
     format: 'h:mma',
   },

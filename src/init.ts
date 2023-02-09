@@ -4,7 +4,7 @@ import { calculateWages } from './calculator'
 import strings from './resources/strings'
 import { handleInput } from './userInputUtils'
 
-const { prompts } = strings
+const { prompts, success } = strings
 
 const init = () => {
   const prompt = promptSync({ sigint: true })
@@ -16,7 +16,7 @@ const init = () => {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const wages = calculateWages(startTime!, bedTime!, endTime!)
 
-  console.log(`\nYou would make $${wages}!`)
+  console.log(success, wages)
 }
 
 export default init

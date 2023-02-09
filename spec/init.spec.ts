@@ -10,6 +10,7 @@ dayjs.extend(customParseFormat)
 
 const {
   dayjs: { format },
+  success,
 } = strings
 
 jest.mock('prompt-sync', () => () => jest.fn())
@@ -46,6 +47,6 @@ describe('src/init', () => {
   })
 
   it('prints correct value to the console', () => {
-    expect(mockConsole).toHaveBeenCalledWith('\nYou would make $80!')
+    expect(mockConsole).toHaveBeenCalledWith(success, 80)
   })
 })
