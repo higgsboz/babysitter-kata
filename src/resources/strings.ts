@@ -12,10 +12,11 @@ export default {
     },
   },
   errors: {
-    outsideBounds: 'Invalid Input: Hours must be between 5pm and 4am.',
-    invalidDate: 'Invalid Date',
+    outsideBounds:
+      '\n --- Invalid Input: Hours must be between 5pm and 4am. ---',
+    invalidDate: '\n --- Invalid Date ---',
     invalidTimeSequence:
-      'Invalid Input: Must have startTime <= bedTime <= endTime',
+      '\n--- Invalid Input: Must have startTime <= bedTime <= endTime ---',
   },
   success: '\nYou would make $',
   dayjs: {

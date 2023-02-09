@@ -6,6 +6,7 @@ import strings from '../../src/resources/strings'
 
 const {
   dayjs: { format },
+  errors,
 } = strings
 
 describe('src/dateUtils', () => {
@@ -34,7 +35,7 @@ describe('src/dateUtils', () => {
       '',
       'gibberish',
     ])('should throw an error for invalid date: %s', (date) => {
-      expect(() => DateUtils.parseDate(date)).toThrow(Error('Invalid Date'))
+      expect(() => DateUtils.parseDate(date)).toThrow(Error(errors.invalidDate))
     })
   })
 
