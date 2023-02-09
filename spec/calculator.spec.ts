@@ -3,12 +3,16 @@ import utc from 'dayjs/plugin/utc'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 import MockDate from 'mockdate'
 
+import strings from '../src/resources/strings'
+import { calculateWages } from '../src/calculator'
+
 dayjs.extend(customParseFormat)
 dayjs.extend(utc)
 
-import { calculateWages } from '../src/calculator'
+const {
+  dayjs: { format },
+} = strings
 
-const format = 'h:mma'
 const getDate = (date: string) => {
   let day = dayjs(date, format)
   if (day.hour() < 12) {
@@ -87,18 +91,6 @@ describe('src/calculator', () => {
     it('should error if start time < bed time < end time is false', () => {
       expect(() =>
         calculateWages(getDate('6:00pm'), getDate('10:00pm'), getDate('7:00pm'))
-      ).toThrow(Error)
-    })
-
-    it('should error if times are out of upper bounds', () => {
-      expect(() =>
-        calculateWages(getDate('6:00pm'), getDate('10:00pm'), getDate('4:01am'))
-      ).toThrow(Error)
-    })
-
-    it('should error if times are out of lower bounds', () => {
-      expect(() =>
-        calculateWages(getDate('4:00pm'), getDate('10:00pm'), getDate('4:00am'))
       ).toThrow(Error)
     })
   })

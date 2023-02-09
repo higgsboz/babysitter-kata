@@ -1,15 +1,11 @@
 import dayjs, { Dayjs } from 'dayjs'
+import strings from './resources/strings'
 
 const PRE_BEDTIME_WAGE = 12
 const POST_BEDTIME_WAGE = 8
 const POST_MIDNIGHT_WAGE = 16
 
-const areTimesValid = (times: Array<Dayjs>) =>
-  !times.some(
-    (time) =>
-      time.isAfter(dayjs().add(1, 'day').hour(4)) ||
-      time.isBefore(dayjs().hour(17))
-  )
+const { errors } = strings
 
 const getMidnight = (time: Dayjs) => {
   if (time.hour() <= 4) {
@@ -37,11 +33,7 @@ export const calculateWages = (
   endTime: Dayjs
 ): number => {
   if (!(startTime.diff(bedTime) <= 0 && bedTime.diff(endTime) <= 0)) {
-    throw Error('Invalid Input: Must have startTime <= bedTime <= endTime')
-  }
-
-  if (!areTimesValid([startTime, bedTime, endTime])) {
-    throw Error('Invalid Input: Times must be between 5pm and 4am')
+    throw Error(errors.invalidTimeSequence)
   }
 
   const midnight = getMidnight(startTime)
